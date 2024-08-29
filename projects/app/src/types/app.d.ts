@@ -44,3 +44,7 @@ export type AppLogsListItemType = {
   customFeedbacksCount: number;
   markCount: number;
 };
+
+export type userList = {
+  _id: string;
+};

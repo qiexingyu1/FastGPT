@@ -72,20 +72,20 @@ const Account = ({ currentTab }: { currentTab: TabEnum }) => {
           }
         ]
       : []),
-    ...(userInfo?.team?.permission.hasWritePer
-      ? [
-          {
-            icon: 'support/outlink/apikeyLight',
-            label: t('common:user.apikey.key'),
-            value: TabEnum.apikey
-          }
-        ]
-      : []),
-    {
-      icon: 'support/user/individuation',
-      label: t('common:support.account.Individuation'),
-      value: TabEnum.individuation
-    },
+    // ...(userInfo?.team?.permission.hasWritePer
+    //   ? [
+    //       {
+    //         icon: 'support/outlink/apikeyLight',
+    //         label: t('common:user.apikey.key'),
+    //         value: TabEnum.apikey
+    //       }
+    //     ]
+    //   : []),
+    // {
+    //   icon: 'support/user/individuation',
+    //   label: t('common:support.account.Individuation'),
+    //   value: TabEnum.individuation
+    // },
     ...(feConfigs.isPlus
       ? [
           {
@@ -150,12 +150,12 @@ const Account = ({ currentTab }: { currentTab: TabEnum }) => {
                 value={currentTab}
                 onChange={setCurrentTab}
               />
-              <Flex alignItems={'center'}>
+              {/* <Flex alignItems={'center'}>
                 <Box w={'8px'} h={'8px'} borderRadius={'50%'} bg={'#67c13b'} />
                 <Box fontSize={'md'} ml={2}>
                   V{systemVersion}
                 </Box>
-              </Flex>
+              </Flex> */}
             </Flex>
           ) : (
             <Box mb={3}>

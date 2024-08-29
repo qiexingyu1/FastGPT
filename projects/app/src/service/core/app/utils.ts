@@ -49,7 +49,8 @@ export const getScheduleTriggerApp = async () => {
           histories: [],
           stream: false,
           detail: false,
-          maxRunTimes: 200
+          maxRunTimes: 200,
+          phone: ''
         });
       } catch (error) {
         addLog.error('Schedule trigger error', error);

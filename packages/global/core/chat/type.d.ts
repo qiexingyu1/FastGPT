@@ -35,6 +35,7 @@ export type ChatSchema = {
   welcomeText?: string;
   variables: Record<string, any>;
   metadata?: Record<string, any>;
+  phone: string;
 };
 
 export type ChatWithAppSchema = Omit<ChatSchema, 'appId'> & {

@@ -91,7 +91,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       histories: chatMessages,
       stream: true,
       detail: true,
-      maxRunTimes: 200
+      maxRunTimes: 200,
+      phone: ''
     });
 
     responseWrite({

@@ -24,6 +24,7 @@ type Props = {
   outLinkUid?: string;
   content: [UserChatItemType & { dataId?: string }, AIChatItemType & { dataId?: string }];
   metadata?: Record<string, any>;
+  phone: string;
 };
 
 export async function saveChat({
@@ -40,7 +41,8 @@ export async function saveChat({
   shareId,
   outLinkUid,
   content,
-  metadata = {}
+  metadata = {},
+  phone
 }: Props) {
   try {
     const chat = await MongoChat.findOne(
@@ -92,7 +94,8 @@ export async function saveChat({
             shareId,
             outLinkUid,
             metadata: metadataUpdate,
-            updateTime: new Date()
+            updateTime: new Date(),
+            phone
           }
         },
         {

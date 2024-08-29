@@ -34,6 +34,7 @@ export type ChatDispatchProps = {
   detail: boolean; // response detail
   maxRunTimes: number;
   isToolCall?: boolean;
+  phone: string;
 };
 
 export type ModuleDispatchProps<T> = ChatDispatchProps & {

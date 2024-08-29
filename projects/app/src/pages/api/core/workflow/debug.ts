@@ -53,7 +53,8 @@ async function handler(
     histories: [],
     stream: false,
     detail: true,
-    maxRunTimes: 200
+    maxRunTimes: 200,
+    phone: ''
   });
 
   pushChatUsage({

@@ -906,6 +906,7 @@
     "Chat": "Chat",
     "Datasets": "Knowledge Base",
     "Studio": "Studio",
+    "User": "UserList",
     "Tools": "Tools"
   },
   "new_create": "Create New",

@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     await connectToDatabase();
 
-    let { chatId, shareId, outLinkUid } = req.query as InitOutLinkChatProps;
+    let { chatId, shareId, outLinkUid, teaAssToken } = req.query as InitOutLinkChatProps;
 
     // auth link permission
     const { shareChat, uid, appId } = await authOutLink({ shareId, outLinkUid });
@@ -39,9 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // auth chat permission
-    if (chat && chat.outLinkUid !== uid) {
-      throw new Error(ChatErrEnum.unAuthChat);
-    }
+    // if (chat && chat.outLinkUid !== uid) {
+    //   throw new Error(ChatErrEnum.unAuthChat);
+    // }
 
     const [{ histories }, { nodes }] = await Promise.all([
       getChatItems({

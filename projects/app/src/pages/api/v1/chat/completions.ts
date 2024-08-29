@@ -64,6 +64,9 @@ import {
   getPluginRunContent
 } from '@fastgpt/global/core/app/plugin/utils';
 import { getSystemTime } from '@fastgpt/global/common/time/timezone';
+const jwt = require('jsonwebtoken');
+import { readFileSync } from 'fs';
+import { MongoT_User } from '@fastgpt/service/support/t_user/schema';
 
 type FastGptWebChatProps = {
   chatId?: string; // undefined: get histories from messages, '': new chat, 'xxxxx': get histories from db
@@ -78,6 +81,7 @@ export type Props = ChatCompletionCreateParams &
     stream?: boolean;
     detail?: boolean;
     variables: Record<string, any>; // Global variables or plugin inputs
+    teaAssToken?: string;
   };
 
 type AuthResponseType = {
@@ -115,8 +119,35 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     detail = false,
     messages = [],
     variables = {},
-    responseChatItemId = getNanoid()
+    responseChatItemId = getNanoid(),
+    teaAssToken
   } = req.body as Props;
+
+  console.log('=-=后端接收：', teaAssToken);
+
+  const basePath =
+    process.env.NODE_ENV === 'development'
+      ? 'data/pluginTemplates/v1'
+      : '/app/data/pluginTemplates/v1';
+
+  let chatPhone = '';
+
+  const secretKey = readFileSync(`${basePath}/priviatekey.txt`, 'utf-8');
+  try {
+    const decoded = jwt.verify(teaAssToken, secretKey, { algorithms: ['RS256'] });
+    if (decoded.sub !== 'FastAuthSSO') {
+      throw new Error('您的登录token无效！');
+    }
+
+    const t_user_id_res = await MongoT_User.find({ _id: decoded.iss });
+    if (!t_user_id_res) {
+      throw new Error('您的登录token无效！');
+    }
+    console.log('验证token手机号：', t_user_id_res);
+    chatPhone = t_user_id_res && t_user_id_res[0]['_id'];
+  } catch (err) {
+    throw new Error('您的登录token无效！');
+  }
 
   const originIp = requestIp.getClientIp(req);
 
@@ -262,7 +293,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           histories: newHistories,
           stream,
           detail,
-          maxRunTimes: 200
+          maxRunTimes: 200,
+          phone: chatPhone
         });
       }
       return dispatchWorkFlowV1({
@@ -284,7 +316,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
         stream,
         detail,
-        maxRunTimes: 200
+        maxRunTimes: 200,
+        phone: chatPhone
       });
     })();
 
@@ -332,7 +365,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         ],
         metadata: {
           originIp
-        }
+        },
+        phone: chatPhone
       });
     }
 
@@ -446,9 +480,10 @@ const authShareChat = async ({
 
   // get chat
   const chat = await MongoChat.findOne({ appId, chatId }).lean();
-  if (chat && (chat.shareId !== data.shareId || chat.outLinkUid !== uid)) {
-    return Promise.reject(ChatErrEnum.unAuthChat);
-  }
+  // if (chat && (chat.shareId !== data.shareId || chat.outLinkUid !== uid)) {
+  //   console.log('33333333333333');
+  //   return Promise.reject(ChatErrEnum.unAuthChat);
+  // }
 
   return {
     teamId,

@@ -171,39 +171,39 @@ const CreateModal = ({ onClose, type }: { type: CreateAppType; onClose: () => vo
           gridTemplateColumns={['repeat(1,1fr)', 'repeat(2,1fr)']}
           gridGap={[2, 4]}
         >
-          {typeData.templates.map((item) => (
-            <Card
-              key={item.id}
-              border={'base'}
-              p={3}
-              borderRadius={'md'}
-              cursor={'pointer'}
-              boxShadow={'sm'}
-              {...(templateId === item.id
-                ? {
-                    bg: 'primary.50',
-                    borderColor: 'primary.500'
+          {/* {typeData.templates.map((item) => ( */}
+          <Card
+            key={typeData.templates[0].id}
+            border={'base'}
+            p={3}
+            borderRadius={'md'}
+            cursor={'pointer'}
+            boxShadow={'sm'}
+            {...(templateId === typeData.templates[0].id
+              ? {
+                  bg: 'primary.50',
+                  borderColor: 'primary.500'
+                }
+              : {
+                  _hover: {
+                    boxShadow: 'md'
                   }
-                : {
-                    _hover: {
-                      boxShadow: 'md'
-                    }
-                  })}
-              onClick={() => {
-                setValue('templateId', item.id);
-              }}
-            >
-              <Flex alignItems={'center'}>
-                <Avatar src={item.avatar} borderRadius={'sm'} w={'1.5rem'} />
-                <Box ml={3} color={'myGray.900'}>
-                  {t(item.name as any)}
-                </Box>
-              </Flex>
-              <Box fontSize={'xs'} mt={2} color={'myGray.600'}>
-                {t(item.intro as any)}
+                })}
+            onClick={() => {
+              setValue('templateId', typeData.templates[0].id);
+            }}
+          >
+            <Flex alignItems={'center'}>
+              <Avatar src={typeData.templates[0].avatar} borderRadius={'sm'} w={'1.5rem'} />
+              <Box ml={3} color={'myGray.900'}>
+                {t(typeData.templates[0].name as any)}
               </Box>
-            </Card>
-          ))}
+            </Flex>
+            <Box fontSize={'xs'} mt={2} color={'myGray.600'}>
+              {t(typeData.templates[0].intro as any)}
+            </Box>
+          </Card>
+          {/* ))} */}
         </Grid>
       </ModalBody>
 

@@ -63,7 +63,9 @@
     "request-ip": "^3.3.0",
     "sass": "^1.58.3",
     "use-context-selector": "^1.4.4",
-    "zustand": "^4.3.5"
+    "zustand": "^4.3.5",
+    "js-tool-big-box": "^1.0.55",
+    "node-xlsx": "^0.24.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",

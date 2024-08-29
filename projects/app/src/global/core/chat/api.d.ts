@@ -19,6 +19,7 @@ export type InitOutLinkChatProps = {
   chatId?: string;
   shareId: string;
   outLinkUid: string;
+  teaAssToken: string;
 };
 export type InitTeamChatProps = {
   teamId: string;

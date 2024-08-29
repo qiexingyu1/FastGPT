@@ -53,6 +53,13 @@ const Navbar = ({ unread }: { unread: number }) => {
         activeIcon: 'support/user/userFill',
         link: '/account',
         activeLink: ['/account']
+      },
+      {
+        label: t('common:navbar.User'),
+        icon: 'support/user/userLight',
+        activeIcon: 'support/user/userFill',
+        link: '/userList',
+        activeLink: ['/userList']
       }
     ],
     [lastChatAppId, lastChatId, t]
@@ -162,7 +169,7 @@ const Navbar = ({ unread }: { unread: number }) => {
           </Link>
         </Box>
       )}
-      {(feConfigs?.docUrl || feConfigs?.chatbotUrl) && (
+      {/* {(feConfigs?.docUrl || feConfigs?.chatbotUrl) && (
         <MyTooltip label={t('common:common.system.Use Helper')} placement={'right-end'}>
           <Link
             {...itemStyles}
@@ -175,8 +182,8 @@ const Navbar = ({ unread }: { unread: number }) => {
             <MyIcon name={'common/courseLight'} width={'24px'} height={'24px'} />
           </Link>
         </MyTooltip>
-      )}
-      {feConfigs?.show_git && (
+      )} */}
+      {/* {feConfigs?.show_git && (
         <MyTooltip label={`Git Star: ${gitStar}`} placement={'right-end'}>
           <Link
             as={NextLink}
@@ -190,7 +197,7 @@ const Navbar = ({ unread }: { unread: number }) => {
             <MyIcon name={'common/gitInlight'} width={'26px'} height={'26px'} />
           </Link>
         </MyTooltip>
-      )}
+      )} */}
     </Flex>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Flex, Drawer, DrawerOverlay, DrawerContent } from '@chakra-ui/react';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
@@ -36,6 +36,8 @@ import { AppTypeEnum } from '@fastgpt/global/core/app/constants';
 import { useChat } from '@/components/core/chat/ChatContainer/useChat';
 import { getNanoid } from '@fastgpt/global/common/string/tools';
 
+import { useToast } from '@fastgpt/web/hooks/useToast';
+
 import dynamic from 'next/dynamic';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
 const CustomPluginRunBox = dynamic(() => import('./components/CustomPluginRunBox'));
@@ -51,6 +53,9 @@ type Props = {
 const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
   const { t } = useTranslation();
   const router = useRouter();
+
+  const { toast } = useToast();
+
   const {
     shareId = '',
     chatId = '',
@@ -66,15 +71,26 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
     authToken: string;
     [key: string]: string;
   };
+
   const { isPc } = useSystem();
   const initSign = useRef(false);
   const [isEmbed, setIdEmbed] = useState(true);
+
+  const [teaAssToken, setTeaAssToken] = useState('teaTokenInit'); // 父页面接收的token
 
   const [chatData, setChatData] = useState<InitChatResponse>(defaultChatData);
   const appId = chatData.appId;
 
   const { localUId } = useShareChatStore();
   const outLinkUid: string = authToken || localUId;
+
+  useEffect(() => {
+    window.addEventListener('message', (e) => {
+      if (e.origin == 'http://101.42.233.165:6666') {
+        setTeaAssToken(e.data);
+      }
+    });
+  }, []);
 
   const {
     loadHistories,
@@ -113,6 +129,14 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
         '*'
       );
 
+      console.log('发送前--', teaAssToken);
+      if (teaAssToken === 'teaTokenInit') {
+        toast({
+          title: '请先登录',
+          status: 'error'
+        });
+        return;
+      }
       const { responseText, responseData } = await streamFetch({
         data: {
           messages: histories,
@@ -123,7 +147,8 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
           shareId,
           chatId: completionChatId,
           appType: chatData.app.type,
-          outLinkUid
+          outLinkUid,
+          teaAssToken
         },
         onMessage: generatingMessage,
         abortCtrl: controller
@@ -176,7 +201,8 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
       const res = await getInitOutLinkChatInfo({
         chatId,
         shareId,
-        outLinkUid
+        outLinkUid,
+        teaAssToken
       });
       setChatData(res);
 

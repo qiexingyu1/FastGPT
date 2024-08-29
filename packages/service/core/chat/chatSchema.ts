@@ -61,7 +61,6 @@ const ChatSchema = new Schema({
   outLinkUid: {
     type: String
   },
-
   variableList: {
     type: Array
   },
@@ -77,6 +76,10 @@ const ChatSchema = new Schema({
     //For special storage
     type: Object,
     default: {}
+  },
+  phone: {
+    type: String,
+    default: ''
   }
 });
 

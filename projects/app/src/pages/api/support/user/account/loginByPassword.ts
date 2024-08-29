@@ -30,7 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (authCert.status === UserStatusEnum.forbidden) {
       throw new Error('账号已停用，无法登录');
     }
-
     const user = await MongoUser.findOne({
       username,
       password
