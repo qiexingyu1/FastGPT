@@ -86,7 +86,8 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
 
   useEffect(() => {
     window.addEventListener('message', (e) => {
-      if (e.origin == 'http://101.42.233.165:6666') {
+      console.log('-=-', e.origin);
+      if (e.origin == 'http://101.42.233.165') {
         setTeaAssToken(e.data);
       }
     });

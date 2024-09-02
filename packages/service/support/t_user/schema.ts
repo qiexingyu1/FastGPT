@@ -10,6 +10,9 @@ const T_UserSchema = new Schema({
   },
   pwd: {
     type: String
+  },
+  createTime: {
+    type: Date
   }
 });
 

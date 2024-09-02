@@ -7,13 +7,15 @@ import { readFromSecondary } from '@fastgpt/service/common/mongo/utils';
 import { MongoT_User } from '@fastgpt/service/support/t_user/schema';
 import { NextAPI } from '@/service/middleware/entry';
 import * as nodeXlsx from 'node-xlsx';
+import dayjs from 'dayjs';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const dataBack = await MongoT_User.find({});
-  let excelData = [['用户']];
+  let excelData = [['用户', '注册时间']];
   if (dataBack.length > 0) {
     dataBack.forEach((eitem: any) => {
-      excelData.push([eitem._id]);
+      let cTime = dayjs(eitem && eitem.createTime).format('YYYY/MM/DD HH:mm');
+      excelData.push([eitem._id, cTime]);
     });
   }
 

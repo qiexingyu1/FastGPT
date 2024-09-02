@@ -13,6 +13,7 @@ import {
   Td,
   HStack
 } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 import PageContainer from '@/components/PageContainer';
 import { serviceSideProps } from '@/web/common/utils/i18n';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
@@ -75,6 +76,7 @@ const UserList = () => {
                 <Thead>
                   <Tr>
                     <Th>用户</Th>
+                    <Th>注册时间</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -82,6 +84,10 @@ const UserList = () => {
                     userListData.map((item: any) => (
                       <Tr key={item && item._id}>
                         <Td>{item && item._id}</Td>
+                        {item && item.createTime && (
+                          <Td>{dayjs(item && item.createTime).format('YYYY/MM/DD HH:mm')}</Td>
+                        )}
+                        {!item || (!item.createTime && <Td>--</Td>)}
                       </Tr>
                     ))}
                 </Tbody>
