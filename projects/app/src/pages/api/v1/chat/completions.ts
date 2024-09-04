@@ -125,28 +125,29 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   console.log('=-=后端接收：', teaAssToken);
 
-  const basePath =
-    process.env.NODE_ENV === 'development'
-      ? 'data/pluginTemplates/v1'
-      : '/app/data/pluginTemplates/v1';
-
   let chatPhone = '';
+  if (teaAssToken) {
+    const basePath =
+      process.env.NODE_ENV === 'development'
+        ? 'data/pluginTemplates/v1'
+        : '/app/data/pluginTemplates/v1';
 
-  const secretKey = readFileSync(`${basePath}/priviatekey.txt`, 'utf-8');
-  try {
-    const decoded = jwt.verify(teaAssToken, secretKey, { algorithms: ['RS256'] });
-    if (decoded.sub !== 'FastAuthSSO') {
+    const secretKey = readFileSync(`${basePath}/priviatekey.txt`, 'utf-8');
+    try {
+      const decoded = jwt.verify(teaAssToken, secretKey, { algorithms: ['RS256'] });
+      if (decoded.sub !== 'FastAuthSSO') {
+        throw new Error('您的登录token无效！');
+      }
+
+      const t_user_id_res = await MongoT_User.find({ _id: decoded.iss });
+      if (!t_user_id_res) {
+        throw new Error('您的登录token无效！');
+      }
+      console.log('验证token手机号：', t_user_id_res);
+      chatPhone = t_user_id_res && t_user_id_res[0]['_id'];
+    } catch (err) {
       throw new Error('您的登录token无效！');
     }
-
-    const t_user_id_res = await MongoT_User.find({ _id: decoded.iss });
-    if (!t_user_id_res) {
-      throw new Error('您的登录token无效！');
-    }
-    console.log('验证token手机号：', t_user_id_res);
-    chatPhone = t_user_id_res && t_user_id_res[0]['_id'];
-  } catch (err) {
-    throw new Error('您的登录token无效！');
   }
 
   const originIp = requestIp.getClientIp(req);

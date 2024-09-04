@@ -7,11 +7,20 @@ import { HUMAN_ICON } from '@fastgpt/global/common/system/constants';
 import NextLink from 'next/link';
 import Badge from '../Badge';
 import Avatar from '@fastgpt/web/components/common/Avatar';
-import MyIcon from '@fastgpt/web/components/common/Icon';
+import MyIcon from '@fastgpt/web/components/common/Icon/';
 import { useTranslation } from 'next-i18next';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
 import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
 import { getDocPath } from '@/web/common/system/doc';
+
+import aiLight from '@fastgpt/web/components/common/Icon/icons/core/app/aiLight.png';
+import aiFill from '@fastgpt/web/components/common/Icon/icons/core/app/aiFill.png';
+import datasetLight from '@fastgpt/web/components/common/Icon/icons/core/dataset/datasetLight.png';
+import datasetFill from '@fastgpt/web/components/common/Icon/icons/core/dataset/datasetFill.png';
+import userLight from '@fastgpt/web/components/common/Icon/icons/support/user/userLight.png';
+import userFill from '@fastgpt/web/components/common/Icon/icons/support/user/userFill.png';
+import userLightList from '@fastgpt/web/components/common/Icon/icons/support/user/userLightList.png';
+import userFillList from '@fastgpt/web/components/common/Icon/icons/support/user/userFillList.png';
 
 export enum NavbarTypeEnum {
   normal = 'normal',
@@ -35,29 +44,29 @@ const Navbar = ({ unread }: { unread: number }) => {
       // },
       {
         label: t('common:navbar.Studio'),
-        icon: 'core/app/aiLight',
-        activeIcon: 'core/app/aiFill',
+        icon: aiLight,
+        activeIcon: aiFill,
         link: `/app/list`,
         activeLink: ['/app/list', '/app/detail']
       },
       {
         label: t('common:navbar.Datasets'),
-        icon: 'core/dataset/datasetLight',
-        activeIcon: 'core/dataset/datasetFill',
+        icon: datasetLight,
+        activeIcon: datasetFill,
         link: `/dataset/list`,
         activeLink: ['/dataset/list', '/dataset/detail']
       },
       {
         label: t('common:navbar.Account'),
-        icon: 'support/user/userLight',
-        activeIcon: 'support/user/userFill',
+        icon: userLight,
+        activeIcon: userFill,
         link: '/account',
         activeLink: ['/account']
       },
       {
         label: t('common:navbar.User'),
-        icon: 'support/user/userLight',
-        activeIcon: 'support/user/userFill',
+        icon: userLightList,
+        activeIcon: userFillList,
         link: '/userList',
         activeLink: ['/userList']
       }
@@ -68,11 +77,10 @@ const Navbar = ({ unread }: { unread: number }) => {
   const itemStyles: BoxProps & LinkProps = {
     my: 3,
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
-    w: '48px',
+    w: '138px',
     h: '58px',
     borderRadius: 'md'
   };
@@ -118,8 +126,8 @@ const Navbar = ({ unread }: { unread: number }) => {
             {...itemStyles}
             {...(item.activeLink.includes(router.pathname)
               ? {
-                  color: 'primary.600',
-                  bg: 'white',
+                  color: '#FFF',
+                  bg: '#317565',
                   boxShadow:
                     '0px 0px 1px 0px rgba(19, 51, 107, 0.08), 0px 4px 4px 0px rgba(19, 51, 107, 0.05)'
                 }
@@ -127,7 +135,8 @@ const Navbar = ({ unread }: { unread: number }) => {
                   color: 'myGray.500',
                   bg: 'transparent',
                   _hover: {
-                    bg: 'rgba(255,255,255,0.9)'
+                    bg: '#317565',
+                    color: '#FFF'
                   }
                 })}
             {...(item.link !== router.asPath
@@ -136,7 +145,7 @@ const Navbar = ({ unread }: { unread: number }) => {
                 }
               : {})}
           >
-            <MyIcon
+            {/* <MyIcon
               name={
                 item.activeLink.includes(router.pathname)
                   ? (item.activeIcon as any)
@@ -144,8 +153,17 @@ const Navbar = ({ unread }: { unread: number }) => {
               }
               width={'20px'}
               height={'20px'}
+            /> */}
+            <img
+              src={
+                item.activeLink.includes(router.pathname)
+                  ? (item.activeIcon.src as any)
+                  : (item.icon.src as any)
+              }
+              width={'20px'}
+              height={'20px'}
             />
-            <Box fontSize={'12px'} transform={'scale(0.9)'} mt={'5px'} lineHeight={1}>
+            <Box fontSize={'12px'} transform={'scale(0.9)'} ml={'10px'} lineHeight={1}>
               {item.label}
             </Box>
           </Box>
