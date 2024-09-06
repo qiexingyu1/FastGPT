@@ -252,7 +252,6 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
       <NextHead title={appName} desc={appIntro} icon={appAvatar} />
 
       <PageContainer
-        isLoading={loading}
         {...(isEmbed
           ? { p: '0 !important', insertProps: { borderRadius: '0', boxShadow: 'none' } }
           : { p: [0, 5] })}
@@ -324,7 +323,12 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
               />
             ) : null}
             {/* chat box */}
-            <Box flex={1} bg={'white'}>
+            <Box
+              flex={1}
+              bg={
+                'linear-gradient(to bottom, rgba(146, 79, 198, 0.6) 0%, rgba(120, 67, 167, 0.4) 100%)'
+              }
+            >
               {chatData.app.type === AppTypeEnum.plugin ? (
                 <CustomPluginRunBox
                   pluginInputs={chatData.app.pluginInputs}

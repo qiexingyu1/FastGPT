@@ -37,7 +37,8 @@ export default function InputGuideBox({
           searchKey: text,
           ...outLinkAuthData
         },
-        chatInputGuide.customUrl ? chatInputGuide.customUrl : undefined
+        // chatInputGuide.customUrl ? chatInputGuide.customUrl : undefined
+        undefined
       );
     },
     {

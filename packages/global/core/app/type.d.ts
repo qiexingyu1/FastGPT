@@ -40,6 +40,7 @@ export type AppSchema = {
 
   inited?: boolean;
   teamTags: string[];
+  canDelete?: boolean;
 } & PermissionSchemaType;
 
 export type AppListItemType = {
@@ -52,6 +53,7 @@ export type AppListItemType = {
   updateTime: Date;
   pluginData?: AppSchema['pluginData'];
   permission: AppPermission;
+  canDelete: Boolean;
 } & PermissionSchemaType;
 
 export type AppDetailType = AppSchema & {
