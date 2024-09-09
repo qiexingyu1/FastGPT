@@ -253,6 +253,7 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
       <NextHead title={appName} desc={appIntro} icon={appAvatar} />
 
       <PageContainer
+        isLoading={loading}
         {...(isEmbed
           ? { p: '0 !important', insertProps: { borderRadius: '0', boxShadow: 'none' } }
           : { p: [0, 5] })}
