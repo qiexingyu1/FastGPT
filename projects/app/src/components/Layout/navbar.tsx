@@ -56,13 +56,13 @@ const Navbar = ({ unread }: { unread: number }) => {
         link: `/dataset/list`,
         activeLink: ['/dataset/list', '/dataset/detail']
       },
-      {
-        label: t('common:navbar.Account'),
-        icon: userLight,
-        activeIcon: userFill,
-        link: '/account',
-        activeLink: ['/account']
-      },
+      // {
+      //   label: t('common:navbar.Account'),
+      //   icon: userLight,
+      //   activeIcon: userFill,
+      //   link: '/account',
+      //   activeLink: ['/account']
+      // },
       {
         label: t('common:navbar.User'),
         icon: userLightList,

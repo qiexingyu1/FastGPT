@@ -45,30 +45,31 @@ const RouteTab = () => {
   );
 
   return (
-    <HStack spacing={4} whiteSpace={'nowrap'}>
-      {tabList.map((tab) => (
-        <Box
-          key={tab.id}
-          px={2}
-          py={0.5}
-          {...(currentTab === tab.id
-            ? {
-                color: 'primary.700'
-              }
-            : {
-                color: 'myGray.600',
-                cursor: 'pointer',
-                _hover: {
-                  bg: 'myGray.200',
-                  borderRadius: 'md'
-                },
-                onClick: () => setCurrentTab(tab.id)
-              })}
-        >
-          {tab.label}
-        </Box>
-      ))}
-    </HStack>
+    // <HStack spacing={4} whiteSpace={'nowrap'}>
+    //   {tabList.map((tab) => (
+    //     <Box
+    //       key={tab.id}
+    //       px={2}
+    //       py={0.5}
+    //       {...(currentTab === tab.id
+    //         ? {
+    //             color: 'primary.700'
+    //           }
+    //         : {
+    //             color: 'myGray.600',
+    //             cursor: 'pointer',
+    //             _hover: {
+    //               bg: 'myGray.200',
+    //               borderRadius: 'md'
+    //             },
+    //             onClick: () => setCurrentTab(tab.id)
+    //           })}
+    //     >
+    //       {tab.label}
+    //     </Box>
+    //   ))}
+    // </HStack>
+    <></>
   );
 };
 

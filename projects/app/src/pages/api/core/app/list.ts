@@ -90,7 +90,7 @@ async function handler(req: ApiRequestProps<ListAppBody>): Promise<AppListItemTy
   const [myApps, rpList] = await Promise.all([
     MongoApp.find(
       findAppsQuery,
-      '_id parentId avatar type name intro tmbId updateTime pluginData defaultPermission inheritPermission'
+      '_id parentId avatar type name intro tmbId updateTime pluginData defaultPermission inheritPermission canDelete'
     )
       .sort({
         updateTime: -1
@@ -150,7 +150,8 @@ async function handler(req: ApiRequestProps<ListAppBody>): Promise<AppListItemTy
     permission: app.permission,
     defaultPermission: app.defaultPermission || AppDefaultPermissionVal,
     pluginData: app.pluginData,
-    inheritPermission: app.inheritPermission ?? true
+    inheritPermission: app.inheritPermission ?? true,
+    canDelete: app.canDelete
   }));
 }
 

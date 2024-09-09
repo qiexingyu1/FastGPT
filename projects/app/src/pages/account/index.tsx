@@ -39,11 +39,11 @@ const Account = ({ currentTab }: { currentTab: TabEnum }) => {
   const { isPc } = useSystem();
 
   const tabList = [
-    {
-      icon: 'support/user/userLight',
-      label: t('common:user.Personal Information'),
-      value: TabEnum.info
-    },
+    // {
+    //   icon: 'support/user/userLight',
+    //   label: t('common:user.Personal Information'),
+    //   value: TabEnum.info
+    // },
     ...(feConfigs?.isPlus
       ? [
           {
@@ -173,7 +173,7 @@ const Account = ({ currentTab }: { currentTab: TabEnum }) => {
           )}
 
           <Box flex={'1 0 0'} h={'100%'} pb={[4, 0]} overflow={'auto'}>
-            {currentTab === TabEnum.info && <UserInfo />}
+            {/* {currentTab === TabEnum.info && <UserInfo />} */}
             {currentTab === TabEnum.promotion && <Promotion />}
             {currentTab === TabEnum.usage && <UsageTable />}
             {currentTab === TabEnum.bill && <BillTable />}

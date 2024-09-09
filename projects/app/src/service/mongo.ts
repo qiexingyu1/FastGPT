@@ -51,7 +51,8 @@ async function initRootUser(retry = 3): Promise<any> {
     const rootUser = await MongoUser.findOne({
       username: 'root'
     });
-    const psw = process.env.DEFAULT_ROOT_PSW || '123456';
+    // const psw = process.env.DEFAULT_ROOT_PSW || '123456';
+    const psw = 'R3a57Iq4C0K@eN^E';
 
     let rootId = rootUser?._id || '';
 

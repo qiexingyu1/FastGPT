@@ -254,16 +254,16 @@ function List() {
                               icon: 'common/file/move',
                               label: t('common:Move'),
                               onClick: () => setMoveDatasetId(dataset._id)
-                            },
-                            ...(dataset.permission.hasManagePer
-                              ? [
-                                  {
-                                    icon: 'support/team/key',
-                                    label: t('common:permission.Permission'),
-                                    onClick: () => setEditPerDatasetIndex(index)
-                                  }
-                                ]
-                              : [])
+                            }
+                            // ...(dataset.permission.hasManagePer
+                            //   ? [
+                            //       {
+                            //         icon: 'support/team/key',
+                            //         label: t('common:permission.Permission'),
+                            //         onClick: () => setEditPerDatasetIndex(index)
+                            //       }
+                            //     ]
+                            //   : [])
                           ]
                         },
                         ...(dataset.type != DatasetTypeEnum.folder
@@ -321,10 +321,10 @@ function List() {
                 </Box>
                 <Flex alignItems={'center'} fontSize={'sm'}>
                   <Box flex={1}>
-                    <PermissionIconText
+                    {/* <PermissionIconText
                       defaultPermission={dataset.defaultPermission}
                       color={'myGray.600'}
-                    />
+                    /> */}
                   </Box>
                   {dataset.type !== DatasetTypeEnum.folder && (
                     <DatasetTypeTag type={dataset.type} py={1} px={2} />

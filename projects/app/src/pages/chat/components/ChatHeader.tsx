@@ -225,7 +225,7 @@ const MobileHeader = ({
         <Flex alignItems={'center'} onClick={toggleDrawer}>
           <Avatar borderRadius={'sm'} src={avatar} w={'1rem'} />
           <Box ml={1} className="textEllipsis">
-            {name}
+            {name !== 'Loading' ? name : ''}
           </Box>
           {isShareChat ? null : (
             <MyIcon

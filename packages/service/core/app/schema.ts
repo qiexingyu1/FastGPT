@@ -110,6 +110,10 @@ const AppSchema = new Schema({
     type: Boolean
   },
 
+  canDelete: {
+    type: Boolean
+  },
+
   ...getPermissionSchema(AppDefaultPermissionVal)
 });
 

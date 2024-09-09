@@ -254,7 +254,7 @@ const Info = ({ datasetId }: { datasetId: string }) => {
         />
       </Flex>
 
-      {datasetDetail.permission.hasManagePer && (
+      {/* {datasetDetail.permission.hasManagePer && (
         <>
           <MyDivider my={6} h={'2px'} maxW={'500px'} />
 
@@ -295,7 +295,7 @@ const Info = ({ datasetId }: { datasetId: string }) => {
             </Box>
           </Flex>
         </>
-      )}
+      )} */}
 
       <Flex mt={5} w={'100%'} alignItems={'flex-end'}>
         <Box flex={['0 0 90px', '0 0 160px']} w={0}></Box>

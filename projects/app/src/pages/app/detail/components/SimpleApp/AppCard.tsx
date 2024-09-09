@@ -69,7 +69,7 @@ const AppCard = () => {
   return (
     <>
       {/* basic info */}
-      <Box px={[4, 6]} py={4} position={'relative'}>
+      {/* <Box px={[4, 6]} py={4} position={'relative'}>
         <Flex alignItems={'center'}>
           <Avatar src={appDetail.avatar} borderRadius={'md'} w={'28px'} />
           <Box ml={3} fontWeight={'bold'} fontSize={'md'} flex={'1 0 0'} color={'myGray.900'}>
@@ -160,7 +160,7 @@ const AppCard = () => {
             </MyTag>
           )}
         </HStack>
-      </Box>
+      </Box> */}
       {TeamTagsSet && <TagsEditModal onClose={() => setTeamTagsSet(undefined)} />}
       {transitionCreateNew !== undefined && (
         <MyModal isOpen title={appT('transition_to_workflow')} iconSrc="core/app/type/workflow">

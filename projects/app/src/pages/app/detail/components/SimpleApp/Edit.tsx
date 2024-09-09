@@ -69,7 +69,7 @@ const Edit = ({
           <AppCard />
         </Box>
 
-        <Box mt={4} {...cardStyles} boxShadow={'3.5'}>
+        <Box mt={0} {...cardStyles} boxShadow={'3.5'}>
           <EditForm appForm={appForm} setAppForm={setAppForm} />
         </Box>
       </Box>

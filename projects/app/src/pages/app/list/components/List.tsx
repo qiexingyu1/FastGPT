@@ -229,12 +229,12 @@ const ListItem = () => {
                       </HStack>
                     )}
 
-                    <PermissionIconText
+                    {/* <PermissionIconText
                       defaultPermission={app.defaultPermission}
                       color={'myGray.500'}
                       iconColor={'myGray.400'}
                       w={'0.875rem'}
-                    />
+                    /> */}
                   </HStack>
 
                   <HStack>
@@ -345,7 +345,7 @@ const ListItem = () => {
                                   }
                                 ]),
 
-                            ...(app.permission.isOwner
+                            ...(app.permission.isOwner && app.canDelete
                               ? [
                                   {
                                     children: [
