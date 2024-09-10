@@ -78,7 +78,7 @@ const Login = () => {
       <Flex
         alignItems={'center'}
         justifyContent={'center'}
-        bg={`url('/icon/login-bg.svg') no-repeat`}
+        bg={`url('/icon/login-bg.png') no-repeat`}
         backgroundSize={'cover'}
         userSelect={'none'}
         h={'100%'}
@@ -87,7 +87,7 @@ const Login = () => {
         <Flex
           flexDirection={'column'}
           w={['100%', 'auto']}
-          h={['100%', '700px']}
+          h={['100%', '400px']}
           maxH={['100%', '90vh']}
           bg={'white'}
           px={['5vw', '88px']}

@@ -41,6 +41,8 @@ import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
 const HttpEditModal = dynamic(() => import('./HttpPluginEditModal'));
 
+import ApplicationPng from '@/pages/app/list/components/application.png';
+
 const ListItem = () => {
   const { t } = useTranslation();
   const { appT, commonT } = useI18n();
@@ -193,7 +195,10 @@ const ListItem = () => {
                 })}
               >
                 <HStack>
-                  <Avatar src={app.avatar} borderRadius={'sm'} w={'1.5rem'} />
+                  <img
+                    src={ApplicationPng.src as any}
+                    style={{ borderRadius: '6px', width: '1.5rem', height: '1.5rem' }}
+                  />
                   <Box flex={'1 0 0'} color={'myGray.900'}>
                     {app.name}
                   </Box>
