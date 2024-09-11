@@ -261,36 +261,36 @@ const ListItem = () => {
                             />
                           }
                           menuList={[
-                            ...([AppTypeEnum.simple, AppTypeEnum.workflow].includes(app.type)
-                              ? [
-                                  {
-                                    children: [
-                                      {
-                                        icon: 'core/chat/chatLight',
-                                        label: appT('go_to_chat'),
-                                        onClick: () => {
-                                          router.push(`/chat?appId=${app._id}`);
-                                        }
-                                      }
-                                    ]
-                                  }
-                                ]
-                              : []),
-                            ...([AppTypeEnum.plugin].includes(app.type)
-                              ? [
-                                  {
-                                    children: [
-                                      {
-                                        icon: 'core/chat/chatLight',
-                                        label: appT('go_to_run'),
-                                        onClick: () => {
-                                          router.push(`/chat?appId=${app._id}`);
-                                        }
-                                      }
-                                    ]
-                                  }
-                                ]
-                              : []),
+                            // ...([AppTypeEnum.simple, AppTypeEnum.workflow].includes(app.type)
+                            //   ? [
+                            //       {
+                            //         children: [
+                            //           {
+                            //             icon: 'core/chat/chatLight',
+                            //             label: appT('go_to_chat'),
+                            //             onClick: () => {
+                            //               router.push(`/chat?appId=${app._id}`);
+                            //             }
+                            //           }
+                            //         ]
+                            //       }
+                            //     ]
+                            //   : []),
+                            // ...([AppTypeEnum.plugin].includes(app.type)
+                            //   ? [
+                            //       {
+                            //         children: [
+                            //           {
+                            //             icon: 'core/chat/chatLight',
+                            //             label: appT('go_to_run'),
+                            //             onClick: () => {
+                            //               router.push(`/chat?appId=${app._id}`);
+                            //             }
+                            //           }
+                            //         ]
+                            //       }
+                            //     ]
+                            //   : []),
                             {
                               children: [
                                 {
@@ -314,41 +314,41 @@ const ListItem = () => {
                                       });
                                     }
                                   }
-                                },
-                                ...(folderDetail?.type === AppTypeEnum.httpPlugin
-                                  ? []
-                                  : [
-                                      {
-                                        icon: 'common/file/move',
-                                        label: t('common:common.folder.Move to'),
-                                        onClick: () => setMoveAppId(app._id)
-                                      }
-                                    ]),
-                                ...(app.permission.hasManagePer
-                                  ? [
-                                      {
-                                        icon: 'support/team/key',
-                                        label: t('common:permission.Permission'),
-                                        onClick: () => setEditPerAppIndex(index)
-                                      }
-                                    ]
-                                  : [])
+                                }
+                                // ...(folderDetail?.type === AppTypeEnum.httpPlugin
+                                //   ? []
+                                //   : [
+                                //       {
+                                //         icon: 'common/file/move',
+                                //         label: t('common:common.folder.Move to'),
+                                //         onClick: () => setMoveAppId(app._id)
+                                //       }
+                                //     ]),
+                                // ...(app.permission.hasManagePer
+                                //   ? [
+                                //       {
+                                //         icon: 'support/team/key',
+                                //         label: t('common:permission.Permission'),
+                                //         onClick: () => setEditPerAppIndex(index)
+                                //       }
+                                //     ]
+                                //   : [])
                               ]
                             },
-                            ...(AppFolderTypeList.includes(app.type)
-                              ? []
-                              : [
-                                  {
-                                    children: [
-                                      {
-                                        icon: 'copy',
-                                        label: appT('copy_one_app'),
-                                        onClick: () =>
-                                          openConfirmCopy(() => onclickCopy({ appId: app._id }))()
-                                      }
-                                    ]
-                                  }
-                                ]),
+                            // ...(AppFolderTypeList.includes(app.type)
+                            //   ? []
+                            //   : [
+                            //       {
+                            //         children: [
+                            //           {
+                            //             icon: 'copy',
+                            //             label: appT('copy_one_app'),
+                            //             onClick: () =>
+                            //               openConfirmCopy(() => onclickCopy({ appId: app._id }))()
+                            //           }
+                            //         ]
+                            //       }
+                            //     ]),
 
                             ...(app.permission.isOwner && app.canDelete
                               ? [

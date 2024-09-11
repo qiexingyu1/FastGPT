@@ -55,23 +55,15 @@ const UserList = () => {
   return (
     <>
       <PageContainer>
-        <Flex flexDirection={['column', 'row']} h={'100%'} pt={[4, 0]}>
+        <Flex style={{ padding: '24px 40px 0' }}>
           <Box flex={'1 0 0'} h={'100%'} pb={[4, 0]} overflow={'auto'}>
-            <Box fontSize={'md'} h={'30px'} textAlign={'center'} paddingTop={'28px'}>
-              用户列表
-            </Box>
-            <Flex justifyContent={'space-between'} marginRight={'20px'} marginTop={'45px'}>
+            <Flex justifyContent={'space-between'}>
               <span></span>
-              <Button
-                variant={'whitePrimary'}
-                colorScheme={'blue'}
-                size={['sm', 'md']}
-                onClick={exportUserList}
-              >
-                导出
+              <Button variant={'primary'} onClick={exportUserList}>
+                <Box>导出</Box>
               </Button>
             </Flex>
-            <TableContainer mt={3} marginLeft={'20px'} marginRight={'20px'}>
+            <TableContainer style={{ paddingTop: '1.25rem' }}>
               <Table variant={'simple'} w={'100%'} overflowX={'auto'} fontSize={'sm'}>
                 <Thead>
                   <Tr>

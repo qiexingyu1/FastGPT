@@ -21,6 +21,7 @@ import userLight from '@fastgpt/web/components/common/Icon/icons/support/user/us
 import userFill from '@fastgpt/web/components/common/Icon/icons/support/user/userFill.png';
 import userLightList from '@fastgpt/web/components/common/Icon/icons/support/user/userLightList.png';
 import userFillList from '@fastgpt/web/components/common/Icon/icons/support/user/userFillList.png';
+import navbarTopHeadPng from '@fastgpt/web/components/common/Icon/icons/support/user/navbarTopHeadPng.png';
 
 export enum NavbarTypeEnum {
   normal = 'normal',
@@ -110,12 +111,16 @@ const Navbar = ({ unread }: { unread: number }) => {
         cursor={'pointer'}
         onClick={() => router.push('/account')}
       >
-        <Avatar
+        {/* <Avatar
           w={'36px'}
           h={'36px'}
           src={userInfo?.avatar}
           fallbackSrc={HUMAN_ICON}
           borderRadius={'50%'}
+        /> */}
+        <img
+          src={navbarTopHeadPng.src as any}
+          style={{ width: '36px', height: '36px', borderRadius: '50%' }}
         />
       </Box>
       {/* 导航列表 */}

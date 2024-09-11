@@ -76,10 +76,11 @@ const Dataset = () => {
               paths={paths}
               FirstPathDom={
                 <Flex flex={1} alignItems={'center'}>
-                  <Image src={'/imgs/workflow/db.png'} alt={''} mr={2} h={'24px'} />
+                  {/* <Image src={'/imgs/workflow/db.png'} alt={''} mr={2} h={'24px'} />
                   <Box className="textlg" letterSpacing={1} fontSize={'24px'} fontWeight={'bold'}>
                     {t('common:core.dataset.My Dataset')}
-                  </Box>
+                  </Box> */}
+                  <></>
                 </Flex>
               }
               onClick={(e) => {

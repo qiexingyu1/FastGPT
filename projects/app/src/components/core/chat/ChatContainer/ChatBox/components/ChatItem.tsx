@@ -15,6 +15,8 @@ import { useCopyData } from '@/web/common/hooks/useCopyData';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
 import { useTranslation } from 'next-i18next';
+import ApplicationPng from '@/pages/app/list/components/application.png';
+
 const colorMap = {
   [ChatStatusEnum.loading]: {
     bg: 'myGray.100',
