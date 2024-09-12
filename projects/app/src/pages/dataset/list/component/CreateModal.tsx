@@ -90,15 +90,15 @@ const CreateModal = ({ onClose, parentId }: { onClose: () => void; parentId?: st
 
   const onSelectDatasetType = useCallback(
     (e: DatasetTypeEnum) => {
-      if (
-        !feConfigs?.isPlus &&
-        (e === DatasetTypeEnum.websiteDataset || e === DatasetTypeEnum.externalFile)
-      ) {
-        return toast({
-          status: 'warning',
-          title: t('common:common.system.Commercial version function')
-        });
-      }
+      // if (
+      //   !feConfigs?.isPlus &&
+      //   (e === DatasetTypeEnum.websiteDataset || e === DatasetTypeEnum.externalFile)
+      // ) {
+      //   return toast({
+      //     status: 'warning',
+      //     title: t('common:common.system.Commercial version function')
+      //   });
+      // }
       setValue('type', e);
     },
     [feConfigs?.isPlus, setValue, t, toast]
@@ -127,19 +127,19 @@ const CreateModal = ({ onClose, parentId }: { onClose: () => void; parentId?: st
                 value: DatasetTypeEnum.dataset,
                 icon: 'core/dataset/commonDataset',
                 desc: datasetT('common_dataset_desc')
-              },
-              {
-                title: datasetT('website_dataset'),
-                value: DatasetTypeEnum.websiteDataset,
-                icon: 'core/dataset/websiteDataset',
-                desc: datasetT('website_dataset_desc')
-              },
-              {
-                title: datasetT('external_file'),
-                value: DatasetTypeEnum.externalFile,
-                icon: 'core/dataset/externalDataset',
-                desc: datasetT('external_file_dataset_desc')
               }
+              // {
+              //   title: datasetT('website_dataset'),
+              //   value: DatasetTypeEnum.websiteDataset,
+              //   icon: 'core/dataset/websiteDataset',
+              //   desc: datasetT('website_dataset_desc')
+              // },
+              // {
+              //   title: datasetT('external_file'),
+              //   value: DatasetTypeEnum.externalFile,
+              //   icon: 'core/dataset/externalDataset',
+              //   desc: datasetT('external_file_dataset_desc')
+              // }
             ]}
             value={datasetType}
             onChange={onSelectDatasetType}
@@ -148,7 +148,7 @@ const CreateModal = ({ onClose, parentId }: { onClose: () => void; parentId?: st
         <Box mt={5}>
           <Box color={'myGray.900'}>{t('common:common.Set Name')}</Box>
           <Flex mt={1} alignItems={'center'}>
-            <MyTooltip label={t('common:common.avatar.Select Avatar')}>
+            {/* <MyTooltip label={t('common:common.avatar.Select Avatar')}>
               <Avatar
                 flexShrink={0}
                 src={avatar}
@@ -158,9 +158,8 @@ const CreateModal = ({ onClose, parentId }: { onClose: () => void; parentId?: st
                 borderRadius={'md'}
                 onClick={onOpenSelectFile}
               />
-            </MyTooltip>
+            </MyTooltip> */}
             <Input
-              ml={3}
               flex={1}
               autoFocus
               bg={'myWhite.600'}

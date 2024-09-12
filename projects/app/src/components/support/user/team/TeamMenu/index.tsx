@@ -33,14 +33,15 @@ const TeamMenu = () => {
       }}
       transform={'none !important'}
       onClick={() => {
-        if (feConfigs.isPlus) {
-          onOpen();
-        } else {
-          toast({
-            status: 'warning',
-            title: t('common:common.system.Commercial version function')
-          });
-        }
+        // if (feConfigs.isPlus) {
+        //   onOpen();
+        // } else {
+        //   toast({
+        //     status: 'warning',
+        //     title: t('common:common.system.Commercial version function')
+        //   });
+        // }
+        onOpen();
       }}
     >
       <MyTooltip label={t('common:user.team.Select Team')}>

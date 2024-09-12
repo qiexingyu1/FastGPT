@@ -62,12 +62,12 @@ function DataProcess({ showPreviewChunks = true }: { showPreviewChunks: boolean 
 
   const onSelectTrainWay = useCallback(
     (e: TrainingModeEnum) => {
-      if (!feConfigs?.isPlus && !TrainingTypeMap[e]?.openSource) {
-        return toast({
-          status: 'warning',
-          title: t('common:common.system.Commercial version function')
-        });
-      }
+      // if (!feConfigs?.isPlus && !TrainingTypeMap[e]?.openSource) {
+      //   return toast({
+      //     status: 'warning',
+      //     title: t('common:common.system.Commercial version function')
+      //   });
+      // }
       setValue('mode', e);
     },
     [feConfigs?.isPlus, setValue, t, toast]

@@ -29,6 +29,7 @@ import { AppListContext } from './context';
 import { AppTypeEnum } from '@fastgpt/global/core/app/constants';
 import { useI18n } from '@/web/context/I18n';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
+import ApplicationPng from '@/pages/app/list/components/application.png';
 
 type FormType = {
   avatar: string;
@@ -131,7 +132,7 @@ const CreateModal = ({ onClose, type }: { type: CreateAppType; onClose: () => vo
 
   return (
     <MyModal
-      iconSrc={typeData.icon}
+      iconSrc={ApplicationPng.src}
       title={typeData.title}
       isOpen
       onClose={onClose}
@@ -142,17 +143,7 @@ const CreateModal = ({ onClose, type }: { type: CreateAppType; onClose: () => vo
           {t('common:common.Set Name')}
         </Box>
         <Flex mt={2} alignItems={'center'}>
-          <MyTooltip label={t('common:common.Set Avatar')}>
-            <Avatar
-              flexShrink={0}
-              src={avatar}
-              w={['28px', '32px']}
-              h={['28px', '32px']}
-              cursor={'pointer'}
-              borderRadius={'md'}
-              onClick={onOpenSelectFile}
-            />
-          </MyTooltip>
+          <img src={ApplicationPng.src as any} style={{ width: '32px', height: '32px' }} />
           <Input
             flex={1}
             ml={4}
@@ -163,16 +154,16 @@ const CreateModal = ({ onClose, type }: { type: CreateAppType; onClose: () => vo
             })}
           />
         </Flex>
-        <Box mt={[4, 7]} mb={[0, 3]} color={'myGray.800'} fontWeight={'bold'}>
+        {/* <Box mt={[4, 7]} mb={[0, 3]} color={'myGray.800'} fontWeight={'bold'}>
           {t('common:core.app.Select app from template')}
-        </Box>
-        <Grid
+        </Box> */}
+        {/* <Grid
           userSelect={'none'}
           gridTemplateColumns={['repeat(1,1fr)', 'repeat(2,1fr)']}
           gridGap={[2, 4]}
-        >
-          {/* {typeData.templates.map((item) => ( */}
-          <Card
+        > */}
+        {/* {typeData.templates.map((item) => ( */}
+        {/* <Card
             key={typeData.templates[0].id}
             border={'base'}
             p={3}
@@ -202,9 +193,9 @@ const CreateModal = ({ onClose, type }: { type: CreateAppType; onClose: () => vo
             <Box fontSize={'xs'} mt={2} color={'myGray.600'}>
               {t(typeData.templates[0].intro as any)}
             </Box>
-          </Card>
-          {/* ))} */}
-        </Grid>
+          </Card> */}
+        {/* ))} */}
+        {/* </Grid> */}
       </ModalBody>
 
       <ModalFooter>
