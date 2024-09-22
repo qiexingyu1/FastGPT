@@ -87,14 +87,14 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
   useEffect(() => {
     window.addEventListener('message', (e) => {
       console.log('-=-', e.origin);
-      // if (e.origin == 'http://154.8.164.35') {
-      //   console.log('=-=', e.data);
-      //   setTeaAssToken(e.data);
-      // }
-      if (e.origin == 'http://101.42.233.165') {
+      if (e.origin == 'http://154.8.164.35') {
         console.log('=-=', e.data);
         setTeaAssToken(e.data);
       }
+      // if (e.origin == 'http://101.42.233.165') {
+      //   console.log('=-=', e.data);
+      //   setTeaAssToken(e.data);
+      // }
     });
   }, []);
 
@@ -321,13 +321,13 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
             flexDirection={'column'}
           >
             {/* header */}
-            {showHead === '1' ? (
+            {/*{showHead === '1' ? (
               <ChatHeader
                 chatData={chatData}
                 history={chatRecords}
                 showHistory={showHistory === '1'}
               />
-            ) : null}
+            ) : null}*/}
             {/* chat box */}
             <Box
               flex={1}
