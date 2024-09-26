@@ -263,7 +263,7 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
           : { p: [0, 5] })}
       >
         <Flex h={'100%'} flexDirection={['column', 'row']}>
-          {showHistory === '1' &&
+          {/* {showHistory === '1' &&
             ((children: React.ReactNode) => {
               return isPc ? (
                 <SideBar>{children}</SideBar>
@@ -310,7 +310,7 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
                   });
                 }}
               />
-            )}
+            )} */}
 
           {/* chat container */}
           <Flex

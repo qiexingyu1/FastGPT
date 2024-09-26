@@ -6,7 +6,10 @@ export const useToast = (props?: UseToastOptions) => {
     position: 'top',
     duration: 2000,
     containerStyle: {
-      fontSize: 'sm'
+      fontSize: 'sm',
+      zIndex: 10,
+      position: 'absolute',
+      marginTop: '80px'
     },
     ...props
   });
