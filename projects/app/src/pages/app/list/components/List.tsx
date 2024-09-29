@@ -350,7 +350,7 @@ const ListItem = () => {
                             //       }
                             //     ]),
 
-                            ...(app.permission.isOwner && app.canDelete
+                            ...(app.permission.isOwner && app.canDelete !== false
                               ? [
                                   {
                                     children: [
