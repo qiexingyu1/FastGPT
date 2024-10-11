@@ -87,7 +87,7 @@ const OutLink = ({ appName, appIntro, appAvatar }: Props) => {
   useEffect(() => {
     window.addEventListener('message', (e) => {
       console.log('-=-', e.origin);
-      if (e.origin == 'http://154.8.164.35') {
+      if (e.origin == 'https://chat.ubdart.com') {
         console.log('=-=', e.data);
         setTeaAssToken(e.data);
       }
